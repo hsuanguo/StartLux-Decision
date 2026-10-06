@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "startlux-decision"
+version = "0.1.0"
+description = "Typed decisions over text and images from one forward pass"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "torch>=2.8",
+    "transformers>=5.8",
+    "huggingface-hub>=0.34",
+    "safetensors>=0.4",
+    "pillow>=10",
+    "torchvision>=0.23",
+    "flash-linear-attention>=0.5.2; sys_platform == 'linux'",
+    "causal-conv1d>=1.7; sys_platform == 'linux'",
+    "mlx-lm>=0.31.3; sys_platform == 'darwin' and platform_machine == 'arm64'",
+]
+
+[project.optional-dependencies]
+finetune = ["peft>=0.20"]
+eval = ["pyarrow>=15"]
+
+[project.urls]
+Repository = "https://github.com/hsuanguo/StartLux-Decision"
+Upstream = "https://github.com/StartLuxLabs/Startlux-Decision"
+
+[tool.setuptools.packages.find]
+include = ["startlux_decision*"]
